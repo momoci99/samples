@@ -14,6 +14,8 @@ const localVideo = document.querySelector('video#localVideo');
 const callButton = document.querySelector('button#callButton');
 const hangupButton = document.querySelector('button#hangupButton');
 const bandwidthSelector = document.querySelector('select#bandwidth');
+const frameSelector = document.querySelector('select#frameRate');
+
 hangupButton.disabled = true;
 callButton.onclick = call;
 hangupButton.onclick = hangup;
@@ -87,7 +89,7 @@ function call() {
   pc2.ontrack = gotRemoteStream;
 
   console.log('Requesting local stream');
-  navigator.mediaDevices.getUserMedia({video: true})
+  navigator.mediaDevices.getUserMedia({video: true, audio:true})
       .then(gotStream)
       .catch(e => alert('getUserMedia() error: ' + e.name));
 }
